@@ -1,11 +1,11 @@
-﻿using DotNetEnv;
-using Microsoft.Data.SqlClient;
+﻿using System;
+using App.Data;
 
-Env.Load();
+Console.WriteLine("Iniciando aplicação...");
 
-string connectionString =
-    $"Server={Environment.GetEnvironmentVariable("DB_SERVER")};" +
-    $"Database={Environment.GetEnvironmentVariable("DB_NAME")};" +
-    $"User Id={Environment.GetEnvironmentVariable("DB_USER")};" +
-    $"Password={Environment.GetEnvironmentVariable("DB_PASSWORD")};" +
-    $"TrustServerCertificate={Environment.GetEnvironmentVariable("DB_TRUST_CERT")};";
+// Cria o banco de dados se necessário
+Database.CreateDatabase();
+
+Console.WriteLine("Aplicação finalizada. Pressione Enter para sair...");
+Console.ReadLine();
+
